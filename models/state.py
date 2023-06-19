@@ -1,15 +1,19 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
+"""Module for State class."""
+
+from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-import models
+from sqlalchemy import Column, Integer, String
 from models.city import City
 import shlex
-
+import models
 
 class State(BaseModel, Base):
-    """ State class """
+    """This is the class representing State
+    Attributes:
+        name: input name
+    """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
     cities = relationship("City", cascade='all, delete, delete-orphan',
